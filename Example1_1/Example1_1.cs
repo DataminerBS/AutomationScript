@@ -56,7 +56,9 @@ namespace Example1_1
 	using System.Globalization;
 	using System.Text;
 	using Skyline.DataMiner.Automation;
-	
+	using Skyline.DataMiner.Core.DataMinerSystem.Automation;
+
+
 	/// <summary>
 	/// Represents a DataMiner Automation script.
 	/// </summary>
@@ -70,6 +72,15 @@ namespace Example1_1
 		{
 
 			engine.GenerateInformation("Hello World");
+
+			var dms = engine.GetDms();
+
+			var elements= dms.GetElements();
+
+			foreach (var element in elements)
+			{
+				engine.GenerateInformation("Element: " + element.Name);
+			}
 	
 		}
 	}
